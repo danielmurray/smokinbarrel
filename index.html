@@ -1,0 +1,185 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@easepick/datetime@1.2.0/dist/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@easepick/core@1.2.0/dist/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@easepick/base-plugin@1.2.0/dist/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@easepick/lock-plugin@1.2.0/dist/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@easepick/range-plugin@1.2.0/dist/index.umd.min.js"></script>
+</head>
+
+<body>
+  <div class="content">
+    <div class="header">
+      <div class="logo">S B</div>
+      <div class="name">smokin barrel</div>
+      <div class="spacer"></div>
+      <button class="cta" onclick="scrollToBook()">Rent a Sauna</button>
+    </div>
+    <div class="hero">
+      <video class="heroVid" autoplay loop muted>
+        <source src="./sauna_short_small.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="theDeal">
+      <div class="words">
+        <div class="question">What's the deal?</div>
+        <div class="description">The Smokin Barrel is a mobile, wood-fired, Finnish-style sauna serving the Madison,
+          Wisconsin area.</div>
+        <div class="description">
+          Whether it's for a party, a relaxing weekend at home or public event, our goal is to offer our community a
+          healthy alternative to relax with friends and family.
+        </div>
+      </div>
+      <div class="image">
+        <img src="./sauna.jpeg" />
+      </div>
+    </div>
+    <div class="pricing">
+      <div class="image">
+        <img src="./madison.jpeg" />
+      </div>
+      <div class="menu">
+        <div class="question">What's it&nbsp;cost?</div>
+        <div class="description">Weekend Rentals (Fri - Mon) - $450</div>
+        <div class="description">Weekday Rentals (Mon - Fri) - $450</div>
+        <div class="description">Week-long Rentals - $800</div>
+        <div class="description">Longer than a week? - <a onclick="scrollToBook()">Get in Touch</a></div>
+        <div class="description">Special Events? - <a onclick="scrollToBook()">Get in Touch</a></div>
+        <div class="spacer"></div>
+        <div class="description">Delivery in the Madison area is free, outside of Dane County there is an additional
+          delivery charge of $3 per mile.</div>
+      </div>
+    </div>
+    <div id="book" class="book">
+      <div class="form">
+        <div class="question">How do I book a&nbsp;sauna?</div>
+        <div class="description">Right here! Fill out this form and we'll get in
+          touch to schedule a&nbsp;delivery.</div>
+        <div class="input">
+          <div class="label">Name</div>
+          <input id="name" />
+        </div>
+        <div class="input">
+          <div class="label">Email</div>
+          <input id="email" />
+        </div>
+        <div class="input">
+          <div class="label">Dates</div>
+          <input id="datepicker" />
+        </div>
+        <div class="input">
+          <div class="label">Anything Else</div>
+          <textarea id="message" rows="4"></textarea>
+        </div>
+        <button id="button" onclick="submitBooking()">Request Booking</button>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="avatar">
+            <img src="./matt.png" />
+          </div>
+          <div class="quote">"Booking the sauna was an awesome addition for my brother's Bachelor party" - Matt</div>
+        </div>
+        <div class="testimonial">
+          <div class="quote">"It was so convenient having a sauna parked in our driveway to entertain family while they
+            were in town" - Sarah</div>
+          <div class="avatar">
+            <img src="./sarah.png" />
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="avatar">
+            <img src="./bryan.jpeg" />
+          </div>
+          <div class="quote">"It wouldn't be a weekend at the lake without a little bit of sauna" - Bryan</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="links">
+        <div>email: <a href="mailto:dan@smokinbarrelsauna.com">dan@smokinbarrelsauna.com</a></div>
+        <div>insta: <a href="https://www.instagram.com/thesmokinbarrelsauna/">@thesmokinbarrelsauna</a></div>
+      </div>
+      <div>© Smokin Barrel, All Rights Reserved</div>
+    </div>
+  </div>
+</body>
+
+<script>
+  function scrollToBook() {
+    document.getElementById("book").scrollIntoView({ behavior: 'smooth' });
+  }
+
+  async function submitBooking() {
+    document.getElementById("button").disabled = true;
+    document.getElementById("button").innerText = 'Requesting...';
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const dates = document.getElementById("datepicker").value;
+    const message = document.getElementById("message").value;
+
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const text = `Name: ${name}\nEmail: ${email}\nDates: ${dates}\nMessage: ${message}`
+
+    const data = JSON.stringify({
+      access_token: 'i0a9txy6r4ispy54mxoybol8',
+      subject: `New booking from ${name}!`,
+      text,
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: data,
+    };
+
+    const response = await fetch('https://postmail.invotes.com/send', requestOptions);
+
+    if (response.ok) {
+      document.getElementById("button").innerText = 'Request Sent!';
+    } else {
+      document.getElementById("button").innerText = 'Request Failed';
+    }
+
+    setTimeout(() => {
+      document.getElementById("button").disabled = false;
+      document.getElementById("button").innerText = 'Request Booking';
+    }, 3000);
+  }
+
+  const DateTime = easepick.DateTime;
+  const now = new DateTime();
+  const bookedDates = [
+    '2023-02-03',
+    '2023-02-04',
+    '2023-02-05',
+  ].map(d => new DateTime(d, 'YYYY-MM-DD'));
+
+  const picker = new easepick.create({
+    element: document.getElementById('datepicker'),
+    css: [
+      'https://cdn.jsdelivr.net/npm/@easepick/core@1.2.0/dist/index.css',
+      'https://cdn.jsdelivr.net/npm/@easepick/lock-plugin@1.2.0/dist/index.css',
+    ],
+    firstDay: 0,
+    plugins: [
+      'LockPlugin',
+      'RangePlugin',
+    ],
+    LockPlugin: {
+      maxDate: now.clone().add(3, 'month'),
+      minDate: now,
+      minDays: 4,
+      filter: (date) => {
+        return date.inArray(bookedDates);
+      },
+    },
+  });
+</script>
+
+</html>

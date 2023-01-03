@@ -1,0 +1,261 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.content {
+  width: 100%;
+}
+
+.header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+
+  font-family: helvetica;
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.logo {
+  background-color: rgb(197, 110, 51);
+  height: 50px;
+  width: 50px;
+  margin-left: 4vw;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-family: helvetica;
+  font-size: 20px;
+}
+
+.name {
+  color: white;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.header .cta {
+  background-color: rgb(197, 110, 51);
+  font-size: 15px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  margin-right: 4vw;
+  border: 0;
+}
+
+.header .cta:hover {
+  opacity: 0.8;
+}
+
+.hero {
+  display: flex;
+  align-items: start;
+  overflow: hidden;
+}
+
+.heroVid {
+  display: inline-block;
+  width: 100%;
+}
+
+.theDeal {
+  display: flex;
+  padding: 5vw;
+}
+
+.theDeal .words {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.theDeal .words .question {
+  font-size: 5vw;
+  font-weight: bold;
+}
+
+.theDeal .words .description {
+  font-size: 2vw;
+}
+
+.theDeal .words .question,
+.theDeal .words .description {
+  padding: 10px 25px 10px 0;
+}
+
+.theDeal .image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  flex: 1;
+}
+
+.theDeal .image img {
+  width: 90%;
+}
+
+.pricing {
+  display: flex;
+
+  background-color: rgb(197, 110, 51);
+  padding: 5vw;
+}
+
+.pricing .image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.pricing .image img {
+  width: 90%;
+}
+
+.pricing .menu {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  color: black;
+  font-size: 25px;
+}
+
+.pricing .menu .question {
+  font-size: 5vw;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.pricing .menu .description {
+  font-size: 2vw;
+  padding: 10px 0;
+}
+
+.pricing .menu .description a {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.pricing .menu .spacer {
+  height: 1vw;
+}
+
+.book {
+  display: flex;
+  padding: 5vw;
+}
+
+.book .form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book .form .question {
+  font-size: 5vw;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.book .form .description {
+  font-size: 2vw;
+  padding: 10px 0;
+}
+
+.book .form .input {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.book .form .input input,
+.book .form .input textarea {
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+.book .form .input input,
+.book .form .input textarea,
+.book .form button {
+  font-size: 15px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.book .form button {
+  background-color: rgb(197, 110, 51);
+  font-size: 20px;
+  color: white;
+
+  margin: 10px 0;
+  padding: 20px;
+  cursor: pointer;
+  border: 0;
+}
+
+.book .form button:hover {
+  opacity: 0.8;
+}
+
+.book .form button:disabled {
+  background-color: rgb(198, 169, 150);
+  cursor: not-allowed
+}
+
+.book .testimonials {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  padding: 2vw;
+}
+
+.book .testimonials .testimonial {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.book .testimonials .testimonial .avatar {
+  background-color: rgb(197, 110, 51);
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  flex: none;
+}
+
+.book .testimonials .testimonial .avatar img {
+  height: 100%;
+  width: 100%;
+}
+
+.book .testimonials .testimonial .quote {
+  padding: 10px;
+}
+
+.footer {
+  background-color: grey;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
