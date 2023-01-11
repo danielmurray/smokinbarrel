@@ -23,7 +23,7 @@ body {
   background-color: rgb(197, 110, 51);
   height: 50px;
   width: 50px;
-  margin-left: 4vw;
+  margin-left: 3vh;
   border-radius: 50px;
 
   display: flex;
@@ -51,7 +51,7 @@ body {
   padding: 10px;
   cursor: pointer;
   color: white;
-  margin-right: 4vw;
+  margin-right: 3vh;
   border: 0;
 }
 
@@ -72,7 +72,7 @@ body {
 
 .theDeal {
   display: flex;
-  padding: 5vw;
+  padding: 5vh;
 }
 
 .theDeal .words {
@@ -84,12 +84,12 @@ body {
 }
 
 .theDeal .words .question {
-  font-size: 5vw;
+  font-size: 5vh;
   font-weight: bold;
 }
 
 .theDeal .words .description {
-  font-size: 2vw;
+  font-size: 2vh;
 }
 
 .theDeal .words .question,
@@ -113,13 +113,14 @@ body {
   display: flex;
 
   background-color: rgb(197, 110, 51);
-  padding: 5vw;
+  padding: 5vh;
 }
 
 .pricing .image {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .pricing .image img {
@@ -132,34 +133,34 @@ body {
   flex-direction: column;
   justify-content: center;
 
-  color: black;
+  color: white;
   font-size: 25px;
 }
 
 .pricing .menu .question {
-  font-size: 5vw;
+  font-size: 5vh;
   font-weight: bold;
   padding: 10px 0;
 }
 
 .pricing .menu .description {
-  font-size: 2vw;
+  font-size: 2vh;
   padding: 10px 0;
 }
 
 .pricing .menu .description a {
   cursor: pointer;
-  color: blue;
+  color: white;
   text-decoration: underline;
 }
 
 .pricing .menu .spacer {
-  height: 1vw;
+  height: 1vh;
 }
 
 .book {
   display: flex;
-  padding: 5vw;
+  padding: 5vh;
 }
 
 .book .form {
@@ -170,13 +171,13 @@ body {
 }
 
 .book .form .question {
-  font-size: 5vw;
+  font-size: 5vh;
   font-weight: bold;
   padding: 10px 0;
 }
 
 .book .form .description {
-  font-size: 2vw;
+  font-size: 2vh;
   padding: 10px 0;
 }
 
@@ -258,4 +259,66 @@ body {
   align-items: center;
   justify-content: space-around;
   padding: 20px;
+  font-size: 1.5vh;
+}
+
+@media (max-width : 500px) {
+  .heroVid {
+    width: 175%;
+  }
+
+  .theDeal {
+    flex-direction: column;
+    padding: 3vh;
+  }
+
+  .theDeal .words .question {
+    flex-direction: column;
+  }
+
+  .theDeal .words .description {
+    flex-direction: column;
+  }
+
+  .theDeal .image {
+    margin: 1vh 0;
+  }
+
+  .theDeal .image img {
+    width: 80%;
+  }
+
+  .pricing {
+    flex-direction: column;
+    padding: 3vh;
+  }
+
+  .pricing .image {
+    margin: 1vh 0;
+  }
+
+  .pricing .image img {
+    width: 80%;
+  }
+
+  .pricing .menu {
+    align-items: center;
+  }
+
+  .pricing .menu .question {
+    text-align: center;
+  }
+
+  .pricing .menu .description {
+    text-align: center;
+  }
+
+  .book {
+    flex-direction: column;
+    padding: 3vh;
+  }
+
+  .footer {
+    font-size: 1.25vh;
+  }
 }
