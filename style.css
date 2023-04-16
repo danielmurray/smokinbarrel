@@ -20,11 +20,9 @@ body {
 }
 
 .logo {
-  background-color: rgb(197, 110, 51);
-  height: 50px;
-  width: 50px;
+  height: 65px;
+  width: 65px;
   margin-left: 3vh;
-  border-radius: 50px;
 
   display: flex;
   justify-content: center;
