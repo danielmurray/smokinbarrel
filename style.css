@@ -115,17 +115,17 @@ body {
 }
 
 .slider {
+  height: 500px;
   width: 100%;
-  max-width: 800px;
-  height: 550px;
+  max-width: 500px;
   position: relative;
   overflow: hidden;
 }
 
 .slide {
+  height: 500px;
   width: 100%;
-  max-width: 800px;
-  height: 550px;
+  max-width: 500px;
   position: absolute;
   transition: all 0.5s;
 }
@@ -336,10 +336,7 @@ body {
 
   .theDeal .image {
     margin: 1vh 0;
-  }
-
-  .theDeal .image img {
-    width: 80%;
+    flex: unset;
   }
 
   .pricing {
