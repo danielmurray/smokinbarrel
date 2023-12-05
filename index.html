@@ -117,6 +117,10 @@
           <input id="name" />
         </div>
         <div class="input">
+          <div class="label">Number</div>
+          <input id="number" />
+        </div>
+        <div class="input">
           <div class="label">Email</div>
           <input id="email" />
         </div>
@@ -196,6 +200,7 @@
     document.getElementById("button").innerText = 'Requesting...';
 
     const name = document.getElementById("name").value;
+    const number = document.getElementById("number").value;
     const email = document.getElementById("email").value;
     const dates = document.getElementById("datepicker").value;
     const message = document.getElementById("message").value;
@@ -203,7 +208,7 @@
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
-    const text = `Name: ${name}\nEmail: ${email}\nDates: ${dates}\nMessage: ${message}`
+    const text = `Name: ${name}\nNumber: ${number}\nEmail: ${email}\nDates: ${dates}\nMessage: ${message}`
 
     const data = JSON.stringify({
       access_token: 'i0a9txy6r4ispy54mxoybol8',
@@ -234,9 +239,9 @@
   const DateTime = easepick.DateTime;
   const now = new DateTime();
   const bookedDates = [
-    '2023-02-03',
-    '2023-02-04',
-    '2023-02-05',
+    '2024-02-03',
+    '2024-02-04',
+    '2024-02-05',
   ].map(d => new DateTime(d, 'YYYY-MM-DD'));
 
   const picker = new easepick.create({
