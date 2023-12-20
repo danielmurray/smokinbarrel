@@ -44,7 +44,8 @@ body {
 }
 
 .header .mail,
-.header .insta {
+.header .insta,
+.header .events  {
   height: 20px;
   margin-right: 20px;
 }
@@ -52,6 +53,19 @@ body {
 .header .mail img,
 .header .insta img {
   height: 100%;
+  opacity: 75%;
+}
+
+.header .events  a {
+  color: white;
+  text-decoration: none;
+  opacity: 75%;
+}
+
+.header .mail img:hover,
+.header .insta img:hover,
+.header .events a:hover {
+  opacity: 100%;
 }
 
 .header .cta {
