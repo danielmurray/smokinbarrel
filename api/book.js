@@ -5,9 +5,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Use POST" });
   }
 
-  const { subject, message } = req.body || {};
-  if (!subject || !message) {
-    return res.status(400).json({ error: "subject and message are required" });
+  const { name, number, email, dates, message } = req.body || {};
+  if (!name || !number) {
+    return res.status(400).json({ error: "name and number are required" });
   }
 
   const transporter = nodemailer.createTransport({
@@ -21,11 +21,17 @@ export default async function handler(req, res) {
   });
 
   try {
+    let emailText = `Name: ${name}\nNumber: ${number}`;
+    if (email) emailText += `\nEmail: ${email}`;
+    if (dates) emailText += `\nDates: ${dates}`;
+    if (message) emailText += `\nMessage: ${message}`;
+    const emailSubject = `New booking from ${name}!`;
+
     await transporter.sendMail({
       from: process.env.FROM_EMAIL,
       to: process.env.TO_EMAIL,
-      subject,
-      text: message,
+      subject: emailSubject,
+      text: emailText,
     });
 
     return res.status(200).json({ ok: true });

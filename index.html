@@ -209,12 +209,12 @@
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
-    const text = `Name: ${name}\nNumber: ${number}\nEmail: ${email}\nDates: ${dates}\nMessage: ${message}`
-
     const data = JSON.stringify({
-      access_token: 'i0a9txy6r4ispy54mxoybol8',
-      subject: `New booking from ${name}!`,
-      text,
+      name,
+      number,
+      email,
+      dates,
+      message,
     });
 
     const requestOptions = {
@@ -223,7 +223,7 @@
       body: data,
     };
 
-    const response = await fetch('https://postmail.invotes.com/send', requestOptions);
+    const response = await fetch('/api/book', requestOptions);
 
     if (response.ok) {
       document.getElementById("button").innerText = 'Request Sent!';
