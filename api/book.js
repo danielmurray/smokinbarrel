@@ -15,6 +15,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Use POST" });
   }
 
+  console.log("Request payload:", req.body);
   const { name, number, email, dates, message } = req.body || {};
   if (!name || !number) {
     return res.status(400).json({ error: "name and number are required" });
