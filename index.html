@@ -223,7 +223,7 @@
       body: data,
     };
 
-    const response = await fetch('/api/book', requestOptions);
+    const response = await fetch('https://smokinbarrel.vercel.app/api/book', requestOptions);
 
     if (response.ok) {
       document.getElementById("button").innerText = 'Request Sent!';
