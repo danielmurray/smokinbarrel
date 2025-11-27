@@ -13,8 +13,14 @@
   box-sizing: border-box;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
+  padding: 0;
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background: var(--sand);
@@ -137,13 +143,21 @@ header {
   scroll-margin-top: 80px;
 }
 
+@media (max-width: 768px) {
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 .section-tight {
   padding-top: 0;
 }
 
 .shell {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .hero {
@@ -485,10 +499,65 @@ textarea {
 }
 
 .faq-item {
-  padding: 1.5rem;
   border-radius: 20px;
   background: var(--cloud);
   border: 1px solid rgba(31, 27, 22, 0.05);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 1rem;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.faq-question:hover:not(:active) {
+  background-color: rgba(31, 27, 22, 0.02);
+}
+
+.faq-question h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: var(--slate);
+  line-height: 1.7;
 }
 
 .inspire {
@@ -569,12 +638,17 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .nav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .nav-links {
     display: none;
   }
 
   .hero {
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 1rem;
   }
 
   .brand {
@@ -592,6 +666,13 @@ footer {
 
   .btn-nav {
     display: none;
+  }
+
+  .seo-block,
+  .book-grid,
+  .about-grid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
