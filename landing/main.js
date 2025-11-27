@@ -17,7 +17,7 @@ async function submitBooking() {
   const body = JSON.stringify({ name, number, email, dates, message });
 
   try {
-    const res = await fetch("/api/book", { method: "POST", headers, body });
+    const res = await fetch("https://smokinbarrel.vercel.app/api/book", { method: "POST", headers, body });
     button.textContent = res.ok ? "Request Sent!" : "Request Failed";
   } catch (err) {
     console.error("Booking error:", err);
