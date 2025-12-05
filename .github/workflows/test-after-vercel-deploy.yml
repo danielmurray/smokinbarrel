@@ -1,0 +1,51 @@
+name: Test Booking Form After Vercel Deploy
+
+on:
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      deployment_url:
+        description: 'Vercel deployment URL'
+        required: false
+        default: 'https://smokinbarrel.vercel.app'
+
+  # Trigger on push to main (after Vercel auto-deploys)
+  push:
+    branches:
+      - main
+
+jobs:
+  wait-for-vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel deployment
+        run: |
+          echo "Waiting 30 seconds for Vercel deployment to complete..."
+          sleep 30
+
+  test-booking:
+    needs: wait-for-vercel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test booking form with Puppeteer
+        env:
+          VERCEL_DEPLOYMENT_ID: ${{ github.sha }}
+          TEST_URL: ${{ github.event.inputs.deployment_url || 'https://smokinbarrel.vercel.app' }}
+        run: |
+          echo "🧪 Testing booking form with Puppeteer..."
+          echo "   Deployment ID: ${{ github.sha }}"
+          echo "   Test URL: $TEST_URL"
+          npm run test:booking "$TEST_URL"
+

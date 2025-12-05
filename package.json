@@ -2,7 +2,13 @@
   "name": "smokin-barrel",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "test:booking": "node scripts/test-booking.js"
+  },
   "dependencies": {
     "nodemailer": "^7.0.11"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.32.0"
   }
 }
