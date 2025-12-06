@@ -1,14 +1,6 @@
 name: Test Booking Form After Vercel Deploy
 
 on:
-  # Manual trigger
-  workflow_dispatch:
-    inputs:
-      deployment_url:
-        description: 'Vercel deployment URL'
-        required: false
-        default: 'https://smokinbarrel.vercel.app'
-
   # Trigger on push to main (after Vercel auto-deploys)
   push:
     branches:
@@ -42,7 +34,7 @@ jobs:
       - name: Test booking form with Puppeteer
         env:
           VERCEL_DEPLOYMENT_ID: ${{ github.sha }}
-          TEST_URL: ${{ github.event.inputs.deployment_url || 'https://smokinbarrel.vercel.app' }}
+          TEST_URL: 'https://smokinbarrel.vercel.app'
         run: |
           echo "🧪 Testing booking form with Puppeteer..."
           echo "   Deployment ID: ${{ github.sha }}"
