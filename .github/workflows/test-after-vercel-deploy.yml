@@ -1,10 +1,10 @@
 name: Test Booking Form After Vercel Deploy
 
 on:
-  # Trigger on push to main (after Vercel auto-deploys)
+  # Trigger on push to master (after Vercel auto-deploys)
   push:
     branches:
-      - main
+      - master
 
 jobs:
   wait-for-vercel:
