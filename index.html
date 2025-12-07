@@ -197,7 +197,7 @@
 
     <section id="book" class="section">
       <div class="shell book-grid">
-        <div>
+        <div style="display: flex; flex-direction: column;">
           <p class="eyebrow">Ready to Book?</p>
           <h2 class="heading">Reserve your barrel sauna.</h2>
           <p>Whether you're planning a weekend rental, exploring custom sauna events, or curious about pop-ups, reach out and let's make it happen. Share your vision and we'll work together to create the perfect heat experience.</p>
@@ -206,6 +206,11 @@
             <li>Authentic wood-fired heat</li>
             <li>Expert guidance every step</li>
           </ul>
+          <div style="flex-grow: 1;"></div>
+          <div style="padding: 1rem 0; grid-column: 1;">
+            <p style="margin-bottom: 0.5rem; color: var(--ink); font-weight: 600; font-size: 1.15rem;">Wanna join a community sesh?</p>
+            <p style="margin: 0;"><a href="https://thesmokinbarrel.as.me/schedule.php" target="_blank" rel="noopener noreferrer" style="color: var(--ember); text-decoration: underline; font-weight: 500;">Grab a pop-up ticket →</a></p>
+          </div>
         </div>
         <form onsubmit="event.preventDefault(); submitBooking();" class="form-grid">
           <label><span>Name *</span><input id="name" required /></label>
