@@ -1,8 +1,18 @@
 # Post-Deployment Test Script
 
-This automatically tests the booking form after each Vercel deployment.
+This automatically tests the booking form after each Vercel deployment and daily at noon Central time.
 
 ## Automatic Testing
+
+### Daily Scheduled Test
+
+The GitHub Action (`.github/workflows/daily-booking-test.yml`) runs:
+- **Every day at 12:00 PM Central Time** (18:00 UTC)
+- Tests your production site
+- Saves failure screenshots (kept for 7 days)
+- Can be manually triggered from GitHub Actions tab
+
+### Post-Deployment Test
 
 The GitHub Action (`.github/workflows/test-after-vercel-deploy.yml`) automatically:
 - Waits for Vercel deployment to complete (30 seconds)
