@@ -33,6 +33,7 @@ jobs:
 
       - name: Test booking form with Puppeteer
         env:
+          TEST_CONTEXT: build
           VERCEL_DEPLOYMENT_ID: ${{ github.sha }}
           TEST_URL: 'https://smokinbarrel.vercel.app'
         run: |

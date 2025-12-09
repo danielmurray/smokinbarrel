@@ -9,6 +9,7 @@
  * Environment variables:
  *   - VERCEL_DEPLOYMENT_ID: Build/deployment ID from Vercel (auto-provided)
  *   - TEST_URL: URL to test (defaults to https://smokinbarrel.vercel.app)
+ *   - TEST_CONTEXT: Context prefix for test name ('build' or 'daily', defaults to 'test')
  */
 
 import puppeteer from 'puppeteer';
@@ -50,10 +51,12 @@ function getDateTimeNumber() {
 async function testBookingForm(url) {
   const buildHash = getBuildHash();
   const dateTimeNumber = getDateTimeNumber();
-  const testName = `test-${buildHash}`;
+  const testContext = process.env.TEST_CONTEXT || 'test';
+  const testName = `${testContext}-${buildHash}`;
   const testNumber = dateTimeNumber;
 
   console.log(`\n🧪 Testing booking form on ${url}`);
+  console.log(`   Context: ${testContext}`);
   console.log(`   Name: ${testName}`);
   console.log(`   Number: ${testNumber}`);
   console.log(`   Build Hash: ${buildHash}\n`);

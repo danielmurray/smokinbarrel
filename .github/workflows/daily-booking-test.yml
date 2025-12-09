@@ -1,0 +1,43 @@
+name: Daily Booking Test
+
+on:
+  # Run every day at noon Central Time
+  # 12:00 PM CST = 18:00 UTC (6 PM UTC)
+  # Note: During CDT (daylight saving), this will be 1:00 PM Central
+  schedule:
+    - cron: '0 18 * * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  test-booking:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run booking test
+        env:
+          TEST_CONTEXT: daily
+        run: npm run test:booking
+
+      - name: Upload failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failure-${{ github.run_number }}
+          path: test-booking-*.png
+          if-no-files-found: ignore
+          retention-days: 7
+
